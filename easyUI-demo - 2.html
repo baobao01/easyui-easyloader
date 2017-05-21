@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- <link rel="stylesheet" href="jquery-easyui-1.5.2/themes/default/tooltip.css"> -->
+	<!-- <link rel="stylesheet" href="jquery-easyui-1.5.2/themes/icon.css"> -->
+	<script src="jquery-easyui-1.5.2/jquery.min.js"></script>
+	<!-- <script src="jquery-easyui-1.5.2/jquery.easyui.min.js"></script> -->
+	<!-- <script src="jquery-easyui-1.5.2/locale/easyui-lang-zh_CN.js"></script> -->
+	<!-- 根据需求加载对应文件 -->
+	<script src="jquery-easyui-1.5.2/easyloader.js"></script>
+</head>
+<body>
+<!-- 使用页面内标记创建组件 -->
+	<!-- <a href="#" title="This is the tooltip message." class="easyui-tooltip">Hover me</a> -->
+<!-- 使用js创建组件 -->
+	<a id="dd" href="javascript:void(0)">Click here</a>
+	<!-- window窗口 -->
+	<div id="win"></div>
+</div>
+</body>
+</html>
+<script>
+$(function(){
+	easyloader.locale="zh_CN";//识别中文
+	//创建提示框
+	using("tooltip", function () {
+    //alert("加载成功！");
+		$('#dd').tooltip({
+	    position: 'right',
+		    content: '<span style="color:#000"> tooltip 组件</span>',
+		    onShow: function(){
+				$(this).tooltip('tip').css({
+					// backgroundColor: '#666',
+					borderColor: '#666',
+				});
+		    }
+		});  
+	});
+	//创建窗口
+	easyloader.load("window", function () {
+		$('#win').window({
+		    width:600,
+		    height:400,
+		    modal:true
+		});
+	});
+})	
+</script>
